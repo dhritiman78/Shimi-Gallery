@@ -34,7 +34,7 @@ const Navbar = (props) => {
     <header id="main_front">
       <nav>
         <div className="name">
-          <h2>Shimi's Gallery</h2>
+          <h2>{"Shimi's Gallery"}</h2>
         </div>
         <div id="sidebar" style={{ display: 'none' }}>
           <button className="closebtn" id="closebtn">
