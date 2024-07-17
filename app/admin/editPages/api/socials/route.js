@@ -29,3 +29,24 @@ export async function POST(req) {
         return NextResponse.json({ message: 'Failed' }, { status: 500 });
     }
 }
+
+export async function GET() {
+    await dbconn();
+    try {
+        const instagram = await PageDetail.findOne({ key: 'instagram' });
+        const linkedIn = await PageDetail.findOne({ key: 'linkedIn' });
+        const pinterest = await PageDetail.findOne({ key: 'pinterest' });
+        const email = await PageDetail.findOne({ key: 'email' });
+
+        const data = {
+            instagram: instagram ? instagram.value : null,
+            linkedIn: linkedIn ? linkedIn.value : null,
+            pinterest: pinterest ? pinterest.value : null,
+            email: email ? email.value : null
+        };
+
+        return NextResponse.json(data);
+    } catch (error) {
+        return NextResponse.json({ message: 'Failed' }, { status: 500 });
+    }
+}

@@ -1,7 +1,16 @@
 "use client"
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from 'react';
 
 const AdminNavbar = (props) => {
+  const router = useRouter();
+  useEffect(() => {
+    const isLoggedIn = Cookies.get("isLoggedIn")
+    if (isLoggedIn != "true") {
+      router.push('/auth/admin')
+    }
+  })
   useEffect(() => {
     const openSidebar = () => {
       const sidebar = document.getElementById('sidebar');

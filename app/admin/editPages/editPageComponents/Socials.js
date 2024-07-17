@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Socials = () => {
   const [socialLinks, setSocialLinks] = useState({
@@ -37,6 +37,26 @@ const Socials = () => {
       alert("Something went wrong");
     }
   };
+
+  useEffect(() => {
+    async function fetchSocials() {
+      try {
+        const response = await fetch('/admin/editPages/api/socials')
+        if (response.ok) {
+          const data = await response.json();
+          setSocialLinks({
+            instagram: data.instagram,
+            linkedIn: data.linkedIn,
+            pinterest: data.pinterest,
+            email: data.email
+          });
+        }
+      } catch (error) {
+        alert('Something went wrong')
+      }
+    }
+    fetchSocials()
+  }, [])
 
   return (
     <div className='container'>

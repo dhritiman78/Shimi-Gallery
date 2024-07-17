@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footerbar from '@/components/Footerbar'
 import { useRouter } from "next/navigation";
 import './admin.css'
+import Cookies from "js-cookie";
 const AdminLoginForm = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -12,6 +13,7 @@ const AdminLoginForm = () => {
     e.preventDefault();
     if (password == "abcd") {
       setError(false);
+      Cookies.set("isLoggedIn","true",{expires: 1})
       router.push('/admin/dashboard')
     } else {
       setError(true);
