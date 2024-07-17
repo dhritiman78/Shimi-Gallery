@@ -25,8 +25,8 @@ const Navbar = (props) => {
   const menuItems = [
     { pageLink: '/', text: 'HOME' },
     { pageLink: '/about', text: 'ABOUT' },
-    { pageLink: '#work', text: 'WORK' },
-    { pageLink: '#contact', text: 'CONTACT' },
+    { pageLink: '/#work', text: 'WORK' },
+    { pageLink: '/#contact', text: 'CONTACT' },
     { pageLink: '/auth/admin', text: 'ADMIN' }
   ];
 

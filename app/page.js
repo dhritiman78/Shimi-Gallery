@@ -1,6 +1,7 @@
 "use client"
+import Art from "@/components/Art";
 import Footerbar from "@/components/Footerbar";
-import Navbar from "@/components/Navbar";
+import MainNavbar from "@/components/MainNavbar";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -21,9 +22,10 @@ export default function Home() {
   },[])
   return (
     <>
-    <Navbar items={<div class="home">
+    <MainNavbar items={<div class="home">
             <p>{intro}</p>
-        </div>}/>
+        </div>} />
+     <Art />   
     <Footerbar />
     </>
   );

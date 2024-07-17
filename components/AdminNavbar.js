@@ -2,6 +2,7 @@
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from 'react';
+import '@/css/mainPages.css'
 
 const AdminNavbar = (props) => {
   const router = useRouter();

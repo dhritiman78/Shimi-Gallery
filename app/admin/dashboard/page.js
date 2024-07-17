@@ -2,6 +2,7 @@ import AdminNavbar from '@/components/AdminNavbar'
 import Footerbar from '@/components/Footerbar'
 import React from 'react'
 import '../editPages/cards.css'
+
 const Cards = () => {
   const cardItems = [
     { head: 'Edit Pages', pageLink: '/admin/editPages' },

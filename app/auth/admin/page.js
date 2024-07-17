@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import Navbar from '@/components/Navbar'
+import MainNavbar from '@/components/MainNavbar';
 import Footerbar from '@/components/Footerbar'
 import { useRouter } from "next/navigation";
 import './admin.css'
@@ -47,7 +47,7 @@ const AdminLoginForm = () => {
 const pages = () => {
   return (
     <>
-    <Navbar items={<AdminLoginForm />}/>
+    <MainNavbar items={<AdminLoginForm />}/>
     <Footerbar />
     </>
   )
