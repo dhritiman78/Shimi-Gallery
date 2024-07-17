@@ -1,9 +1,9 @@
 "use client"
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react'
+import React ,{ useEffect } from 'react'
 
-const page = () => {
+const Page = () => {
 const router = useRouter()
 
   useEffect(() => {
@@ -12,6 +12,9 @@ const router = useRouter()
     // Redirect to /auth/admin
     router.push('/auth/admin')
   }, [router])
+  return (
+    <div></div>
+  )
 }
 
-export default page
+export default Page
