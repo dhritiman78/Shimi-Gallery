@@ -2,7 +2,6 @@ import { dbconn } from '@/db/db';
 import PageDetail from '@/models/pagedetails';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import bcrypt from 'bcryptjs'
 
 
 let otpStore = {}; // Temporary in-memory store for OTPs, replace with a database in production
@@ -19,11 +18,10 @@ export async function POST(request) {
   const email = await request.json();
   const otp = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
   otpStore[email] = otp; // Store the OTP, replace with database logic
-  var salt = bcrypt.genSaltSync(10);
-  var hash = bcrypt.hashSync(toString(otp), salt);
+
   await dbconn()
   try {
-    await PageDetail.findOneAndUpdate({key: "otp"},{value: hash})
+    await PageDetail.findOneAndUpdate({key: "otp"},{value: otp})
   } catch (error) {
     return NextResponse.json({ message: 'Error sending OTP' }, { status: 500 });
   }
