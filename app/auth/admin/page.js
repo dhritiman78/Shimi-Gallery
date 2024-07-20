@@ -9,14 +9,28 @@ const AdminLoginForm = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
   const [isError, setError] = useState(false);
-  const handleSubmit  = (e) => {
+  const handleSubmit  = async (e) => {
     e.preventDefault();
-    if (password == "abcd") {
-      setError(false);
-      Cookies.set("isLoggedIn","true",{expires: 1})
-      router.push('/admin/dashboard')
-    } else {
-      setError(true);
+    try {
+      const response = await fetch('./admin/login',  {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(password),
+      })
+      if (response.ok) {
+        const data = await response.json()
+        if (data.message == "Logged In!") {
+          setError(false);
+          Cookies.set("isLoggedIn","true",{expires: 1})
+          router.push('/admin/dashboard') 
+        } else {
+          setError(true);
+        }
+      }
+    } catch (error) {
+      alert("An error occured. Please try again later.")
     }
   }
   return (
@@ -39,6 +53,9 @@ const AdminLoginForm = () => {
           {isError && <p style={{color: "red"}}>** Incorrect Password!</p>}
         </div>
         <button type="submit" className="login-button">Login</button>
+        <div style={{margin: "10px auto"}}>
+          <a href={"./admin/verify-otp"}>Forgot Password</a>
+        </div>
       </form>
     </div>
   );
