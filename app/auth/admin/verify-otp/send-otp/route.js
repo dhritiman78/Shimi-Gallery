@@ -29,7 +29,7 @@ export async function POST(request) {
   const mailOptions = {
     from: process.env.NEXT_OTP_EMAIL,
     to: email,
-    subject: 'Your OTP Code',
+    subject: 'OTP Verification for Shimi-Gallery',
     text: `Your OTP code is ${otp}`,
   };
 
