@@ -12,7 +12,7 @@ const OtpForm = () => {
   const [isError, setError] = useState(false);
   const [isOtpSent,setIsOtpSent] = useState(false)
   const handleSendOtp = async () => {
-    const email = 'nikitabaruah74@gmail.com'
+    const email = 'dhritiman.saikia.11b.244@gmail.com'
     try {
       const response = await fetch('./verify-otp/send-otp',  {
         method: 'POST',
